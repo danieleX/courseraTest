@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coursera Test</title>
+    <meta name="author" content="Daniele Irsuti">
+    <meta name="description" content="Coursera final test">
+    <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+</head>
+<body>
+    <form>
+    <fieldset>
+        <legend>Your Face</legend>
+        <label for="img">Your Image</label><input id="avatar" type="file" name="img"><br>
+        Image preview: <img id="preview" src="screen.png">
+    </fieldset>
+    <fieldset>
+        <legend>Your General Details</legend>
+        <label for="name">Name</label><input type="text" name="name"><br>
+        <label for="gender">Gender</label><input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female">Female<br>
+        <label for="age">Age</label><input type="number" name="age"><br>
+        <label for="date">Date of Birth</label><input type="date" name="date"><br>
+        <label for="color">Favorite color</label><input type="color" name="color"><br>
+        <label for="country">Which country</label><select name="country">
+        <option value="Europe">Europe</option>
+        <option value="America">America</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Your indicators</legend>
+        <label for="height">Height</label><input type="range" name="height" max="100" min="0"><br>
+        <label for="salary">Salary</label><input type="range" name="salary" max="100" min="0">
+    </fieldset>
+    <fieldset>
+        <legend>Your Contact Information</legend>
+        <label for="email">Email</label><input type="email" name="email"><br>
+        <label for="phone">Mobile</label><input type="text" name="phone"><br>
+        <label for="address">Address</label><textarea name="address" cols="25"></textarea><br>
+        <label for="methodToContact">method to contact you</label>
+        <input type="radio" name="methodToContact" value="email">Email<br>
+        <input type="radio" name="methodToContact" value="whatsapp">Whatsapp<br>
+        <input type="radio" name="methodToContact" value="inappchat">In app chat<br>
+
+    </fieldset>
+    <input type="submit">
+    </form>
+</body>
+</html>
