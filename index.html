@@ -1,104 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Coursera Test</title>
+    <title>Fullstack Developera for Coursera test</title>
     <meta name="author" content="Daniele Irsuti">
-    <meta name="description" content="Coursera final test">
-    <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+    <meta name="description" content="The assignment test for Coursera">
+    <base href="assets/" target="_blank">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script>
+        function init() {
+            var bootStrapJs = document.createElement("script");
+            bootStrapJs.src = "js/bootstrap.min.js";
+            bootStrapJs.async = "true";
+            document.getElementsByTagName("head")[0].appendChild(bootStrapJs);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" onload="init()"></script>
+
     <style>
-        label:hover, input:hover, select:hover {
-            font-size: 1.5em; /* 40px is too much! :P */
+        .full {
+            background: lightblue;
+            color: aliceblue;
+            text-align: center;
         }
-        fieldset {
-            border: solid 10px yellow;
-            width: 720px;
-            background: lightyellow;
-            margin: 10px 0px;
+        .full h1 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-weight: bolder
         }
-        label, .imgPreview {
-            display: inline-block;
-            width: 180px;
-            text-align: right;
-            vertical-align: top;
+        .full small {
+            color: aliceblue;
+            font-weight: thin;
         }
-        input[type="radio"] {
-            width: auto;
+        .theList {
+            color: lightgray;
+            list-style: none;
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            margin-top: 20px;
         }
-        textarea {
-            width: 360px;
-            height: 50px;
+        .theList li:before {
+            content: "#";
+            display: inline;
+            margin-right: 5px;
+            font-size: 2em;
+            vertical-align: middle;
         }
-        .height:before {
-            display: inline-block;
-            vertical-align: top;
-            content: "Short";
-            background: red;
-            color: white;
-            margin-left: 5px;
-        }
-        .height:after {
-            content: "Tall";
-            background: purple;
-            color: white;
-            display: inline-block;
-            vertical-align: top;
-            margin-left: 5px;
-        }
-        .salary:before {
-            display: inline-block;
-            vertical-align: top;
-            content: "Poor";
-            background: red;
-            color: white;
-            margin-left: 5px;
-        }
-        .salary:after {
-            content: "Rich";
-            background: purple;
-            color: white;
-            display: inline-block;
-            vertical-align: top;
-            margin-left: 5px;
+        .theList a {
+            color: lightblue;
+            font-size: 1.3em;
         }
     </style>
 </head>
-<body>
-    <form enctype="multipart/form-data" method="post" action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
-    <fieldset>
-        <legend>Your Face</legend>
-        <label for="img">Your Image:</label><input id="avatar" required type="file" name="img"><br>
-        <span class="imgPreview">Image preview:</span> <img id="preview" src="#">
-    </fieldset>
-    <fieldset>
-        <legend>Your General Details</legend>
-        <label for="name">Name:</label><input type="text" name="name"><br>
-        <label for="gender">Gender</label><input type="radio" name="gender" value="male"> Male
-        <input type="radio" name="gender" required value="female">Female:<br>
-        <label for="age">Age:</label><input type="number" name="age"><br>
-        <label for="date">Date of Birth:</label><input type="date" name="date"><br>
-        <label for="color">Favorite color:</label><input type="color" name="color"><br>
-        <label for="country">Which country:</label><select name="country">
-        <option value="Europe">Europe</option>
-        <option value="America">America</option>
-        </select>
-    </fieldset>
-    <fieldset>
-        <legend>Your indicators</legend>
-        <label for="height">Height:</label><span class="height"><input type="range" name="height" max="100" min="0"></span><br>
-        <label for="salary">Salary:</label><span class="salary"><input type="range" name="salary" max="100" min="0"></span>
-    </fieldset>
-    <fieldset>
-        <legend>Your Contact Information</legend>
-        <label for="email">Email:</label><input type="email" required name="email"><br>
-        <label for="phone">Mobile:</label><input type="text" name="phone"><br>
-        <label for="address">Address</label><textarea name="address" cols="25"></textarea><br>
-        <label for="methodToContact">Method to contact you:</label>
-        <input type="checkbox" name="methodToContact" value="email">Email
-        <input type="checkbox" name="methodToContact" value="whatsapp">Whatsapp
-        <input type="checkbox" name="methodToContact" value="inappchat">In app chat<br>
 
-    </fieldset>
-    <input type="submit">
-    </form>
+<body>
+    <header class="full container-fluid">
+        <h1>Fullstack developer course <small>Coursera tests</small></h1>
+    </header>
+    <div class="container">
+        <ul class="theList">
+            <li><a rel="nofollow" href="../htmlecss/index.html">HTML and CSS</a></li>
+            <li><a class="disable" rel="nofollow" href="#" title="Coming soon">Javascript</a></li>
+        </ul>
+    </div>
 </body>
 </html>
