@@ -1,8 +1,13 @@
-var theLeftSide, // left column
+var theBody = document.getElementById("theBody"), // the body!
+    theLeftSide, // left column
     theRightSide, // right column
     smile, // <img> - Range from 0 to 400;
     faces, // Level
-    imgCheck; // Find all images
+    imgCheck, // Find all images
+    lastImg, // The last image
+    IO = true, // Start the game!
+    host = window.location, // currenct url
+    audio;
 
 theLeftSide = document.getElementById("leftSide");
 theRightSide = document.getElementById("rightSide");
@@ -51,19 +56,79 @@ function copyNode() {
 /* The game is begin! */
 function countImages() {
     var imgs = document.getElementsByTagName("img");
-    console.log(imgs.length);
+    lastImg = theRightSide.lastChild;
+
     for (i = 0; i < imgs.length; i++) {
         imgs[i].addEventListener("click", wrong, false);
-        console.log(imgs[i]);
+        //console.log(imgs[i]); //Debug
+    }
+    lastImg.removeEventListener("click", wrong, false);
+    lastImg.addEventListener("click", correct, false);
+}
+
+var wrong = function(event) {
+    if (IO == true) {
+        alert("Game Over!");
+        audio = new Audio('js/gnomas.mp3');
+        audio.play();
+        lastImg.style.background = "red"; // show the correct answer
+        document.getElementById("pt").innerHTML = translate("score") + (faces - 5) + "!";
+        nextLevel(false);
+        event.stopPropagation();
+    }
+
+    else {
+        start();
+        theLeftSide.addEventListener("click", playAgain, false);
+        theRightSide.addEventListener("click", playAgain, false)
+    }
+
+}
+
+var correct = function(event) {
+    nextLevel(true);
+    audio = new Audio('js/sound.mp3');
+    audio.play();
+}
+
+function nextLevel(bool) {
+    if (bool == true) { // if your answer is correct
+        while (theLeftSide.firstChild) {
+            theLeftSide.removeChild(theLeftSide.firstChild);
+        }
+        while (theRightSide.firstChild) {
+            theRightSide.removeChild(theRightSide.firstChild);
+        }
+
+        faces += 5;
+        start();
+    }
+
+    else {
+        IO = false;
+        theRightSide.lastChild.removeEventListener("click", correct, false);
+        theRightSide.lastChild.addEventListener("click", playAgain, false);
+    }
+
+}
+
+function start() {
+    if (IO == true) {
+        generateFaces();
+        copyNode();
+        countImages();
+    }
+    else {
+        playAgain;
     }
 }
 
-var wrong = function() {
-    alert("ciao");
-    event.stopPropagation();
+var playAgain = function() {
+    var ask = confirm(translate("refresh"));
+    if (ask == true)
+        window.location.href = host;
 }
 
-
-
-//i= 0;
-//while (document.getElementsByTagName("img"))
+function facebook() {
+    window.location.href="https://www.facebook.com/sharer/sharer.php?u="+host
+}

@@ -1,27 +1,13 @@
-<html lang="en">
+<html>
 
 <head>
     <title>Smile game!</title>
     <meta name="author" content="Daniele Irsuti">
     <meta name="description" content="Find the intruder smile">
-    <meta name="image" content="img/smile.png">
-
-    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <meta name="image" content="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png">
     <link rel="stylesheet" href="css/style.css" media="all">
-    <script src="js/data.js"></script>
+
     <style>
-        body {
-            font-family: "Nunito", sans-serif;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: bolder;
-        }
-        #pt {
-            text-align: center;
-            font-weight: bolder;
-            font-size: 3em;
-        }
         .gameContainer * {
             box-sizing: border-box;
         }
@@ -49,19 +35,16 @@
 
 </head>
 
-<body id="theBody" onload="start(); autoTranslate()">
+<body id="theBody">
     <header>
-        <h1 id="title">Matching Game!</h1>
-        <p>Click on the extra smiling face on the right</p>
+        <h1>Matching Game!</h1>
+        <p>Click on the extra smiling face on the left</p>
     </header>
     <div class="gameContainer">
         <div id="leftSide"></div>
         <div id="rightSide"></div>
     </div>
     <div id="pt"></div>
-    <div onClick="facebook()" id="share" style="text-align: center; cursor: pointer">Condividi su Facebook</div>
-
-    <script src="js/game.js"></script>
 </body>
 
 </html>

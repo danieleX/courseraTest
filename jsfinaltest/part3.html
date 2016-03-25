@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <title>Smile game!</title>
+    <meta name="author" content="Daniele Irsuti">
+    <meta name="description" content="Find the intruder smile">
+    <meta name="image" content="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png">
+    <link rel="stylesheet" href="css/style.css" media="all">
+
+    <style>
+        .gameContainer * {
+            box-sizing: border-box;
+        }
+        #rightSide, #leftSide {
+            float: left;
+            width: 500px;
+            height: 500px;
+            min-width: 50%;
+            min-height: 50%;
+            position: relative /* why absolute? */
+        }
+        .gameContainer:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #rightSide {
+            border-left: 1px solid black;
+        }
+        img {
+            position: absolute;
+        }
+    </style>
+
+
+</head>
+
+<body id="theBody" onload="generateFaces(); copyNode()">
+    <header>
+        <h1>Matching Game!</h1>
+        <p>Click on the extra smiling face on the left</p>
+    </header>
+    <div class="gameContainer">
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
+    </div>
+    <div id="pt"></div>
+    <script>
+        var theBody = document.getElementById("theBody"), // the body!
+            theLeftSide, // left column
+            theRightSide, // right column
+            smile, // <img> - Range from 0 to 400;
+            faces, // Level
+            imgCheck, // Find all images
+            lastImg, // The last image
+            IO = true, // Start the game!
+            host = window.location; // currenct url
+
+        theLeftSide = document.getElementById("leftSide");
+        theRightSide = document.getElementById("rightSide");
+        imgCheck = document.getElementsByTagName("img");
+        faces = 5;
+
+        /* Initialize Smiles */
+
+        function generateFaces() {
+            var initialFaces = 0;
+            while (initialFaces < faces) {
+                generateSmile();
+                initialFaces++;
+            }
+        }
+
+        function randomize(number) {
+            floatNumber = Math.random() * number;
+            integerNumber = Math.floor(floatNumber);
+            return integerNumber + "px";
+        }
+
+        function generateSmile() {
+            var smile = document.createElement("img");
+            smile.src ="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+            theLeftSide.appendChild(smile);
+            smile.style.left = randomize(400);
+            smile.style.top = randomize(400);
+            smile.style.width = 100 + "px";
+        }
+
+        /* Right column copying */
+
+        function copyNode() {
+            var node,
+                countNodes = 0;
+            while (theLeftSide.childNodes.length > countNodes) {
+                node = theLeftSide.childNodes[countNodes].cloneNode(true);
+                theRightSide.appendChild(node);
+                countNodes++;
+            }
+            theLeftSide.lastChild.remove(); //delete smile from left
+            return true;
+        }
+
+        /* The game is begin! */
+        function countImages() {
+            var imgs = document.getElementsByTagName("img");
+            lastImg = theRightSide.lastChild;
+            console.log(imgs.length);
+            for (i = 0; i < imgs.length; i++) {
+                imgs[i].addEventListener("click", wrong, false);
+                console.log(imgs[i]);
+            }
+            lastImg.removeEventListener("click", wrong, false);
+            lastImg.addEventListener("click", correct, false);
+        }
+
+        var wrong = function(event) {
+            alert("Game Over!");
+            lastImg.style.background = "red"; // show the correct answer
+            document.getElementById("pt").innerHTML = "Your score is " + (faces - 5) + "!";
+            nextLevel(false);
+            event.stopPropagation();
+
+        }
+
+        var correct = function(event) {
+            nextLevel(true);
+        }
+
+        function nextLevel(bool) {
+            if (bool == true) { // if your answer is correct
+                while (theLeftSide.firstChild) {
+                    theLeftSide.removeChild(theLeftSide.firstChild);
+                }
+                while (theRightSide.firstChild) {
+                    theRightSide.removeChild(theRightSide.firstChild);
+                }
+
+                faces += 5;
+                start();
+            }
+
+            else {
+                IO = false;
+                theRightSide.lastChild.removeEventListener("click", correct, false);
+                theRightSide.lastChild.addEventListener("click", playAgain, false);
+            }
+
+        }
+
+        function start() {
+            if (IO == true) {
+                generateFaces();
+                copyNode();
+                countImages();
+            }
+            else {
+                playAgain;
+            }
+        }
+
+        var playAgain = function() {
+            var ask = confirm("Refresh to play again!");
+            if (ask == true)
+                window.location.href = host;
+        }
+    </script>
+</body>
+
+</html>
