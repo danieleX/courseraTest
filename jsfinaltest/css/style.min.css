@@ -1,0 +1,1 @@
+.gameContainer *{box-sizing:border-box}#leftSide,#rightSide{float:left;width:500px;height:500px;min-width:50%;min-height:50%;position:relative}.gameContainer:after{content:"";display:block;clear:both}#rightSide{border-left:1px solid #000}

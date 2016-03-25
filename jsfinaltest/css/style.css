@@ -1,0 +1,19 @@
+.gameContainer * {
+    box-sizing: border-box;
+}
+#rightSide, #leftSide {
+    float: left;
+    width: 500px;
+    height: 500px;
+    min-width: 50%;
+    min-height: 50%;
+    position: relative /* why absolute? */
+}
+.gameContainer:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+#rightSide {
+    border-left: 1px solid black;
+}
