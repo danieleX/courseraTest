@@ -1,5 +1,6 @@
 // Set Attribute Lang
-var locale = window.navigator.userLanguage || window.navigator.language;
+var locale = window.navigator.userLanguage || window.navigator.language,
+    browserLang = locale.slice(0,2);
 
 function selector(arg) {
     return document.getElementsByTagName(arg);
@@ -23,7 +24,7 @@ var languages = {
 }
 
 function translate(arg) {
-    return languages[locale][arg];
+    return languages[browserLang][arg];
 }
 
 function autoTranslate() {
@@ -37,6 +38,6 @@ function autoTranslate() {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/" + locale + "_" + locale.toUpperCase() + "/sdk.js#xfbml=1&version=v2.5&appId=412849558891438";
+  js.src = "//connect.facebook.net/" + browserLang + "_" + browserLang.toUpperCase() + "/sdk.js#xfbml=1&version=v2.5&appId=412849558891438";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
