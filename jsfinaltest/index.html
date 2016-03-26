@@ -4,7 +4,13 @@
     <title>Smile game!</title>
     <meta name="author" content="Daniele Irsuti">
     <meta name="description" content="Find the intruder smile">
+    <meta name="copyright" content="Daniele Irsuti">
     <meta name="image" content="img/smile.png">
+    <!-- Facebook garbages -->
+    <meta property="og:title" content="Smile game">
+    <meta property="og:description" content="Find the intruder smile">
+    <meta property="og:image"  content="img/smile.png">
+    <meta property="og:url" content="http://danielex.github.io/courseraTest/jsfinaltest/">
 
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css" media="all">
@@ -58,9 +64,9 @@
         <div id="leftSide"></div>
         <div id="rightSide"></div>
     </div>
-    <div id="pt"></div>
-    <div onClick="facebook()" id="share" style="text-align: center; cursor: pointer">Condividi su Facebook</div>
-
+    <div id="pt">&nbsp;</div>
+    <div id="share" style="text-align: center; cursor: pointer"><div class="fb-share-button" data-href="http://danielex.github.io/courseraTest/jsfinaltest/" data-layout="button_count"></div></div>
+    <div id="fb-root"></div>
     <script src="js/game.js"></script>
 </body>
 

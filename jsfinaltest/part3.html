@@ -96,14 +96,14 @@
                 theRightSide.appendChild(node);
                 countNodes++;
             }
-            theLeftSide.lastChild.remove(); //delete smile from left
+            theRightSide.lastChild.remove(); //delete smile from left
             return true;
         }
 
         /* The game is begin! */
         function countImages() {
             var imgs = document.getElementsByTagName("img");
-            lastImg = theRightSide.lastChild;
+            lastImg = theLeftSide.lastChild;
             console.log(imgs.length);
             for (i = 0; i < imgs.length; i++) {
                 imgs[i].addEventListener("click", wrong, false);
@@ -141,8 +141,8 @@
 
             else {
                 IO = false;
-                theRightSide.lastChild.removeEventListener("click", correct, false);
-                theRightSide.lastChild.addEventListener("click", playAgain, false);
+                theLeftSide.lastChild.removeEventListener("click", correct, false);
+                theLeftSide.lastChild.addEventListener("click", playAgain, false);
             }
 
         }
@@ -163,6 +163,7 @@
             if (ask == true)
                 window.location.href = host;
         }
+
     </script>
 </body>
 
