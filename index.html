@@ -12,20 +12,6 @@
             bootStrapJs.src = "assets/js/bootstrap.min.js";
             bootStrapJs.async = "true";
             document.getElementsByTagName("head")[0].appendChild(bootStrapJs);
-            var appendList;
-            for (i=0; i < list.length; i++ ) {
-                appendList = "<li class=\"preview\"><a rel=\"nofollow\" target=\"_self\" href=\"#\" data-href=\"" + list[i].url + "\">" + list[i].title + "</a></li>";
-                $(".theList").append(appendList);
-            }
-
-            $(".preview a").click(function(){
-                var href = $(this).attr("data-href");
-                console.log(href);
-                $("#preview").html("<iframe onload=\"resizeIframe(this)\" src=\"" + href + "\">");
-            });
-            function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-            }
         }
 
         var list = [
@@ -46,9 +32,23 @@
                 title: "Ristorante conFusion"
             }
         ];
+        function renderList() {
+            var appendList;
+            for (i=0; i < list.length; i++ ) {
+                $(".theList").append("<li class=\"preview\"><a rel=\"nofollow\" target=\"_self\" href=\"#\" data-href=\"" + list[i].url + "\">" + list[i].title + "</a></li>");
+            }
+
+            $(".preview a").click(function(){
+                var href = $(this).attr("data-href");
+                console.log(href);
+                $("#preview").html("<iframe onload=\"resizeIframe(this)\" src=\"" + href + "\">");
+            });
+        }
+        function resizeIframe(obj) {
+            obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        }
     </script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js" onload="init()"></script>
-
     <style>
         .full {
             background: lightblue;
@@ -101,5 +101,6 @@
         </ul>
     </div>
     <div class="container" id="preview"></div>
+    <script>renderList()</script>
 </body>
 </html>
